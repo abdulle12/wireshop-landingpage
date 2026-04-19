@@ -74,11 +74,7 @@ const LandingPage = () => {
     }
 
     setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '' });
-      setError('');
-    }, 3000);
+    setFormData({ name: '', email: '' });
   };
   // ────────────────────────────────────────────────────────────────────────
 
@@ -408,43 +404,92 @@ const LandingPage = () => {
             <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
             <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-indigo-500 opacity-20 rounded-full blur-2xl"></div>
 
-            <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Be among the first to try Wireshops</h2>
-            <p className="text-base md:text-lg text-slate-300 mb-2 max-w-xl mx-auto relative z-10">
-              We're launching soon in Kenya 🇰🇪
-            </p>
-            <p className="text-sm text-slate-400 mb-10 relative z-10">Join early users and get access first.</p>
-            
-            <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-lg mx-auto relative z-10">
-              <input 
-                type="text" 
-                name="name"
-                placeholder="Full Name" 
-                className="w-full sm:flex-1 px-5 py-4 rounded-xl border-0 bg-white/10 text-white placeholder-slate-400 focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-              <input 
-                type="email" 
-                name="email"
-                placeholder="Email Address" 
-                className="w-full sm:flex-1 px-5 py-4 rounded-xl border-0 bg-white/10 text-white placeholder-slate-400 focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full sm:w-auto bg-white text-[#1f2a37] px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-lg whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {isLoading ? 'Joining...' : submitted ? 'You are in! 🎉' : 'Join Waitlist'}
-              </button>
-            </form>
+            {submitted ? (
+              /* ── Success State ── */
+              <div className="relative z-10 flex flex-col items-center">
+                {/* Animated checkmark ring */}
+                <div className="w-20 h-20 rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center mb-6 mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                    <CheckCircle2 className="text-[#1f2a37]" size={28} />
+                  </div>
+                </div>
 
-            {/* ── Error message ── */}
-            {error && (
-              <p className="mt-4 text-red-400 text-sm font-medium relative z-10">{error}</p>
+                <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 tracking-tight">
+                  You're on the list! 🎉
+                </h2>
+                <p className="text-base md:text-lg text-slate-300 mb-8 max-w-md mx-auto leading-relaxed">
+                  Welcome to the Wireshops early access community. We'll be in touch soon.
+                </p>
+
+                {/* What to expect cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl mb-8">
+                  {[
+                    { icon: ShieldCheck, title: "Early Access", desc: "You'll be among the first to get in when we launch." },
+                    { icon: MessageCircle, title: "Launch Updates", desc: "We'll email you key milestones and sneak peeks." },
+                    { icon: Star, title: "Founding Perks", desc: "Early users get exclusive benefits at launch." }
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-white/10 border border-white/10 rounded-2xl p-4 text-left backdrop-blur-sm">
+                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mb-3">
+                        <item.icon className="text-white" size={16} />
+                      </div>
+                      <h4 className="text-white font-semibold text-sm mb-1">{item.title}</h4>
+                      <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Divider */}
+                <div className="w-full max-w-md border-t border-white/10 mb-6"></div>
+
+                {/* Share nudge */}
+                <p className="text-slate-400 text-sm mb-2">
+                  Know someone who'd love Wireshops?
+                </p>
+                <p className="text-white font-medium text-sm">
+                  Share the word — the more early users, the faster we launch 🚀
+                </p>
+              </div>
+            ) : (
+              /* ── Default Form State ── */
+              <>
+                <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Be among the first to try Wireshops</h2>
+                <p className="text-base md:text-lg text-slate-300 mb-2 max-w-xl mx-auto relative z-10">
+                  We're launching soon in Kenya 🇰🇪
+                </p>
+                <p className="text-sm text-slate-400 mb-10 relative z-10">Join early users and get access first.</p>
+                
+                <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-lg mx-auto relative z-10">
+                  <input 
+                    type="text" 
+                    name="name"
+                    placeholder="Full Name" 
+                    className="w-full sm:flex-1 px-5 py-4 rounded-xl border-0 bg-white/10 text-white placeholder-slate-400 focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Email Address" 
+                    className="w-full sm:flex-1 px-5 py-4 rounded-xl border-0 bg-white/10 text-white placeholder-slate-400 focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full sm:w-auto bg-white text-[#1f2a37] px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-lg whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? 'Joining...' : 'Join Waitlist'}
+                  </button>
+                </form>
+
+                {error && (
+                  <p className="mt-4 text-red-400 text-sm font-medium relative z-10">{error}</p>
+                )}
+              </>
             )}
 
             <p className="mt-8 text-xs text-slate-400 uppercase tracking-widest relative z-10">© 2026 Wireshops — Simple. Local. Trusted. 🇰🇪</p>
