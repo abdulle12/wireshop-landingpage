@@ -13,19 +13,28 @@ import {
   MapPin,
   Users
 } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
 import phoneImg from './assets/phone.png';
 import desktopImg from './assets/desktop.png';
 import Logo from './assets/ds.png';
 import shop from './assets/new.png';
 import profile from './assets/profile.png';
 import intro from './assets/intro.png';
-import checkout from './assets/checkout.png';``
+import checkout from './assets/checkout.png';
 
+// ── Supabase client ──────────────────────────────────────────────────────────
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
+// ────────────────────────────────────────────────────────────────────────────
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);   // ← new
+  const [error, setError]         = useState('');       // ← new
 
   // Brand Palette
   const brandColors = {
@@ -41,16 +50,37 @@ const LandingPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleJoin = (e) => {
+  // ── Updated handleJoin — saves to Supabase ───────────────────────────────
+  const handleJoin = async (e) => {
     e.preventDefault();
-    if (formData.email && formData.name) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({ name: '', email: '' });
-      }, 3000);
+    if (!formData.email || !formData.name) return;
+
+    setIsLoading(true);
+    setError('');
+
+    const { error: sbError } = await supabase
+      .from('waitlist')
+      .insert([{ full_name: formData.name, email: formData.email }]);
+
+    setIsLoading(false);
+
+    if (sbError) {
+      if (sbError.code === '23505') {
+        setError('This email is already on the waitlist!');
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+      return;
     }
+
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: '', email: '' });
+      setError('');
+    }, 3000);
   };
+  // ────────────────────────────────────────────────────────────────────────
 
   const scrollToWaitlist = () => {
     document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
@@ -103,7 +133,6 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <section className="pt-20 pb-12 lg:pt-20 lg:pb-20 overflow-hidden relative">
-        {/* Background Gradient Blob */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[800px] h-[500px] bg-gray-100 rounded-full blur-3xl -z-10 opacity-60"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
@@ -126,14 +155,12 @@ const LandingPage = () => {
 
           {/* Hero Mockups */}
           <div className="relative w-full max-w-5xl mt-2 px-2 md:px-0">
-            {/* Desktop Frame */}
             <div className={`relative mx-auto border-[#1f2a37] bg-[#1f2a37] border-[4px] md:border-[8px] rounded-t-2xl md:rounded-t-3xl shadow-2xl max-w-4xl overflow-hidden`}>
               <div className="bg-white">
                 <img src={desktopImg} alt="Desktop Dashboard" className="w-full h-auto block opacity-95" />
               </div>
             </div>
 
-            {/* Floating Phone */}
             <div className="absolute -bottom-4 -right-2 sm:-bottom-8 sm:right-0 md:-bottom-12 md:-right-4 w-[100px] sm:w-[140px] md:w-[200px] z-20 hover:-translate-y-2 transition-transform duration-500">
               <div className={`relative border-[#1f2a37] bg-[#1f2a37] border-[3px] md:border-[6px] rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden`}>
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-10 md:w-20 h-3 md:h-5 bg-[#1f2a37] z-30 rounded-b-md md:rounded-b-xl"></div>
@@ -169,13 +196,11 @@ const LandingPage = () => {
             ))}
           </div>
 
-          {/* Solution */}
           <div className="text-center mb-12">
             <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>We fixed the way people buy & sell online</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            {/* Step 1 */}
             <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
               <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-6`}>
                 <MessageCircle className="text-white" size={24} />
@@ -186,7 +211,6 @@ const LandingPage = () => {
               </p>
             </div>
 
-            {/* Step 2 */}
             <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
               <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-6`}>
                 <ShieldCheck className="text-white" size={24} />
@@ -197,7 +221,6 @@ const LandingPage = () => {
               </p>
             </div>
 
-            {/* Step 3 */}
             <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
               <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-6`}>
                 <Star className="text-white" size={24} />
@@ -244,7 +267,6 @@ const LandingPage = () => {
               <p className="mt-8 text-slate-400 font-medium text-sm">👉 No tech skills needed.</p>
             </div>
 
-            {/* Seller Visuals */}
             <div className="lg:w-1/2 order-1 lg:order-2 w-full">
               <div className="relative py-10 md:py-16 flex justify-center"> 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full md:h-[120%] bg-gradient-to-tr from-slate-100 to-transparent rounded-full -z-10"></div>
@@ -329,7 +351,6 @@ const LandingPage = () => {
               </ul>
             </div>
 
-            {/* Buyer Visuals */}
             <div className="lg:w-1/2 w-full">
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <div className="space-y-4 pt-8 md:pt-12">
@@ -412,10 +433,20 @@ const LandingPage = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="w-full sm:w-auto bg-white text-[#1f2a37] px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-lg whitespace-nowrap">
-                {submitted ? 'You are in! 🎉' : 'Join Waitlist'}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full sm:w-auto bg-white text-[#1f2a37] px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-lg whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isLoading ? 'Joining...' : submitted ? 'You are in! 🎉' : 'Join Waitlist'}
               </button>
             </form>
+
+            {/* ── Error message ── */}
+            {error && (
+              <p className="mt-4 text-red-400 text-sm font-medium relative z-10">{error}</p>
+            )}
+
             <p className="mt-8 text-xs text-slate-400 uppercase tracking-widest relative z-10">© 2026 Wireshops — Simple. Local. Trusted. 🇰🇪</p>
           </div>
         </div>
