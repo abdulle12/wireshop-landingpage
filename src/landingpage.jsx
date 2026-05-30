@@ -33,8 +33,8 @@ const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '' });
   const [submitted, setSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);   // ← new
-  const [error, setError]         = useState('');       // ← new
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError]         = useState('');
 
   // Brand Palette
   const brandColors = {
@@ -99,8 +99,8 @@ const LandingPage = () => {
 
             <div className="hidden md:flex items-center space-x-8">
               <a href="#problem" className="text-slate-600 hover:text-[#1f2a37] font-medium text-sm transition-colors">Why Wireshops</a>
-              <a href="#sellers" className="text-slate-600 hover:text-[#1f2a37] font-medium text-sm transition-colors">Sellers</a>
-              <a href="#buyers" className="text-slate-600 hover:text-[#1f2a37] font-medium text-sm transition-colors">Buyers</a>
+              <a href="#sellers" className="text-slate-600 hover:text-[#1f2a37] font-medium text-sm transition-colors">Sell Clothes</a>
+              <a href="#buyers" className="text-slate-600 hover:text-[#1f2a37] font-medium text-sm transition-colors">Shop Fashion</a>
               <button onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5`}>
                 Join Waitlist
               </button>
@@ -118,8 +118,8 @@ const LandingPage = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-20 left-0 w-full bg-white border-b border-gray-100 p-4 flex flex-col gap-4 shadow-xl z-50">
             <a href="#problem" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-800 p-2">Why Wireshops</a>
-            <a href="#sellers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-800 p-2">For Sellers</a>
-            <a href="#buyers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-800 p-2">For Buyers</a>
+            <a href="#sellers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-800 p-2">Sell Your Clothes</a>
+            <a href="#buyers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-800 p-2">Shop Fashion</a>
             <button onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-5 py-3 rounded-xl text-center font-bold`}>
               Join Waitlist
             </button>
@@ -134,15 +134,15 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           
           <h1 className={`text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight ${brandColors.text} mb-6 max-w-5xl leading-tight`}>
-            Buy & sell locally. <br className="hidden md:block" />
+            Buy & sell fashion locally. <br className="hidden md:block" />
             <span className="text-slate-400">Without the stress.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl mb-4 leading-relaxed px-4">
-            Connect with nearby shops, chat in real time, and pay safely — all in one simple platform.
+            Clear out your wardrobe or shop from real local boutiques — chat in real time, pay safely, and get what you actually want.
           </p>
           <p className="text-sm md:text-base text-slate-400 mb-10 font-medium">
-            No websites. No endless DMs. No trust issues.
+            No Instagram DMs. No M-Pesa scams. No fake receipts.
           </p>
 
           <button onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-12`}>
@@ -173,15 +173,15 @@ const LandingPage = () => {
       <section id="problem" className="py-16 md:py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>Online shopping is broken.</h2>
+            <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>Buying & selling clothes online is a mess.</h2>
             <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-10">It shouldn't be this hard.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
             {[
-              { icon: AlertCircle, label: "Buyers fear getting scammed" },
-              { icon: Smile, label: "Sellers deal with fake orders" },
-              { icon: MessageCircle, label: "Everything happens in messy DMs" }
+              { icon: AlertCircle, label: "You send money — the seller ghosts you" },
+              { icon: Smile, label: "Sellers deal with buyers who never show up" },
+              { icon: MessageCircle, label: "Everything happens in scattered DMs with no record" }
             ].map((item, idx) => (
               <div key={idx} className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow flex items-center gap-4">
                 <div className={`w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center flex-shrink-0`}>
@@ -193,7 +193,7 @@ const LandingPage = () => {
           </div>
 
           <div className="text-center mb-12">
-            <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>We fixed the way people buy & sell online</h2>
+            <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>We made fashion safe to buy & sell online</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
@@ -201,9 +201,9 @@ const LandingPage = () => {
               <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-6`}>
                 <MessageCircle className="text-white" size={24} />
               </div>
-              <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Chat before you buy</h3>
+              <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Ask before you buy</h3>
               <p className="text-slate-500 leading-relaxed">
-                Talk directly with shops — ask questions, confirm details, and negotiate in real time.
+                Message sellers directly — check sizing, condition, and delivery before committing. No surprises.
               </p>
             </div>
 
@@ -211,9 +211,9 @@ const LandingPage = () => {
               <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-6`}>
                 <ShieldCheck className="text-white" size={24} />
               </div>
-              <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Pay with protection</h3>
+              <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Your money is protected</h3>
               <p className="text-slate-500 leading-relaxed">
-                Your money is held safely and only released after you receive your order. No more scam worries.
+                Pay through Wireshops and your funds are held safely. Released only once your order arrives and you're happy.
               </p>
             </div>
 
@@ -221,9 +221,9 @@ const LandingPage = () => {
               <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-6`}>
                 <Star className="text-white" size={24} />
               </div>
-              <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Built on real trust</h3>
+              <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Ratings from real buyers</h3>
               <p className="text-slate-500 leading-relaxed">
-                Verified reviews from real transactions — no fake ratings, no guesswork.
+                Every review is tied to a real transaction — no fake hype, no guesswork.
               </p>
             </div>
           </div>
@@ -240,14 +240,14 @@ const LandingPage = () => {
                 For Sellers
               </div>
               <h2 className={`text-3xl md:text-5xl font-bold ${brandColors.text} mb-6 md:mb-8 tracking-tight`}>
-                Run your shop. <br/> Simply.
+                Turn your unwanted <br/> clothes into cash.
               </h2>
               <ul className="space-y-6">
                 {[
-                  { title: "Create your shop in minutes", desc: "Set up your brand profile, add products, and start selling — zero coding required." },
-                  { title: "List products for free", desc: "No upfront costs. Upload your inventory and start showcasing your products instantly." },
-                  { title: "Manage orders, chats & payments in one place", desc: "Everything you need to run your business — from one simple, powerful dashboard." },
-                  { title: "Build a loyal customer base", desc: "Shoppers can follow your store and get updates whenever you drop new products." }
+                  { title: "List items in minutes", desc: "No shop setup, no tech skills needed. Upload photos, set your price, and go live instantly." },
+                  { title: "List for free — no upfront costs", desc: "Zero fees to get started. Upload your pieces and start reaching buyers right away." },
+                  { title: "Manage orders, chats & payments in one place", desc: "Everything you need to run your sales — from one simple, powerful dashboard." },
+                  { title: "Build a following of loyal buyers", desc: "Shoppers can follow your profile and get notified whenever you drop new pieces." }
                 ].map((item, index) => (
                   <li key={index} className="flex gap-4 group">
                     <div className={`mt-1 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-[#1f2a37] transition-colors`}>
@@ -260,7 +260,7 @@ const LandingPage = () => {
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 text-slate-400 font-medium text-sm">👉 No tech skills needed.</p>
+              <p className="mt-8 text-slate-400 font-medium text-sm">👉 Your old outfit is someone else's next favourite look.</p>
             </div>
 
             <div className="lg:w-1/2 order-1 lg:order-2 w-full">
@@ -285,15 +285,15 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
             <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Built for how people actually buy in Kenya</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Built for how people actually shop fashion in Kenya</h2>
               <p className="text-slate-300 text-lg leading-relaxed mb-4">
-                Most commerce already happens on WhatsApp. We didn't change that.
+                Most fashion buying and selling already happens on WhatsApp and Instagram. We didn't change that.
               </p>
               <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                We made it <span className="text-white font-semibold">safer, simpler, and organized.</span>
+                We made it <span className="text-white font-semibold">safer, simpler, and organised.</span>
               </p>
               <div className="p-6 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10 mb-4">
-                <p className="text-white italic">"I just want to buy something without wondering if it's a scam."</p>
+                <p className="text-white italic">"I just want to find a nice piece without stressing about whether the seller is real."</p>
               </div>
               <div className="p-6 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10">
                 <p className="text-white italic">"Finally, a place where I feel safe paying online."</p>
@@ -301,9 +301,9 @@ const LandingPage = () => {
             </div>
             <div className="md:w-1/2 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { icon: Lock, text: "Trust around payments" },
-                { icon: Smile, text: "No unserious buyers" },
-                { icon: AlertCircle, text: "Stop fear of scams" },
+                { icon: Lock, text: "No fake M-Pesa screenshots" },
+                { icon: Smile, text: "No ghost buyers" },
+                { icon: AlertCircle, text: "No scam worries" },
                 { icon: ArrowRight, text: "Clear delivery terms" }
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
@@ -325,14 +325,14 @@ const LandingPage = () => {
                 For Buyers
               </div>
               <h2 className={`text-3xl md:text-5xl font-bold ${brandColors.text} mb-8 tracking-tight`}>
-                Shop with confidence.
+                Shop fashion with confidence.
               </h2>
               <ul className="space-y-6">
                 {[
-                  { title: "Discover real local shops near you", desc: "Find verified sellers in one place instead of scrolling through random social media posts." },
-                  { title: "Follow shops and get updates", desc: "Stay in the loop whenever your favourite sellers drop new products or deals." },
-                  { title: "See clear pricing and reviews", desc: "No more guessing — honest prices and real buyer reviews, upfront." },
-                  { title: "Pay safely — no more worrying", desc: "Your money is held securely and only released once you confirm your order arrived." }
+                  { title: "Discover verified local shops & thrift sellers near you", desc: "Browse boutiques and secondhand listings in one place — no more scrolling through random Instagram pages." },
+                  { title: "Follow sellers and never miss a new drop", desc: "Stay in the loop whenever your favourite shops or thrift accounts list new pieces or deals." },
+                  { title: "See real photos, clear pricing & honest reviews", desc: "No more guessing — genuine buyer reviews and upfront pricing on every listing." },
+                  { title: "Pay safely — your money is protected", desc: "Funds are held securely and only released once you confirm your order arrived. Zero risk." }
                 ].map((item, index) => (
                   <li key={index} className="flex gap-4 group">
                     <div className={`mt-1 w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 border border-slate-200 group-hover:border-[#1f2a37] transition-colors`}>
@@ -378,9 +378,9 @@ const LandingPage = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
             {[
-              { step: "01", icon: MapPin, title: "Find a shop", desc: "Browse local sellers and discover products near you." },
-              { step: "02", icon: MessageCircle, title: "Chat & place order", desc: "Ask questions, negotiate, and confirm your order in real time." },
-              { step: "03", icon: ShieldCheck, title: "Pay safely → confirm → done", desc: "Pay with escrow protection. Release funds only when you're happy." }
+              { step: "01", icon: MapPin, title: "Discover shops & listings near you", desc: "Browse local boutiques and thrift sellers in your area — all verified, all in one place." },
+              { step: "02", icon: MessageCircle, title: "Chat, ask questions & place your order", desc: "Message the seller to confirm sizing, condition, or price — before you commit." },
+              { step: "03", icon: ShieldCheck, title: "Pay safely → receive → confirm → done", desc: "Your payment is held in escrow. Once your order arrives and you're happy, the seller gets paid." }
             ].map((item, idx) => (
               <div key={idx} className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow text-center">
                 <div className="text-5xl font-extrabold text-slate-100 mb-4">{item.step}</div>
@@ -424,7 +424,7 @@ const LandingPage = () => {
                 {/* What to expect cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl mb-8">
                   {[
-                    { icon: ShieldCheck, title: "Early Access", desc: "You'll be among the first to get in when we launch." },
+                    { icon: ShieldCheck, title: "Early Access", desc: "You'll be among the first to shop and sell when we launch." },
                     { icon: MessageCircle, title: "Launch Updates", desc: "We'll email you key milestones and sneak peeks." },
                     { icon: Star, title: "Founding Perks", desc: "Early users get exclusive benefits at launch." }
                   ].map((item, idx) => (
@@ -443,7 +443,7 @@ const LandingPage = () => {
 
                 {/* Share nudge */}
                 <p className="text-slate-400 text-sm mb-2">
-                  Know someone who'd love Wireshops?
+                  Know someone who loves fashion or wants to sell their old clothes?
                 </p>
                 <p className="text-white font-medium text-sm">
                   Share the word — the more early users, the faster we launch 🚀
@@ -452,11 +452,11 @@ const LandingPage = () => {
             ) : (
               /* ── Default Form State ── */
               <>
-                <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Be among the first to try Wireshops</h2>
+                <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Be among the first to shop on Wireshops</h2>
                 <p className="text-base md:text-lg text-slate-300 mb-2 max-w-xl mx-auto relative z-10">
-                  We're launching soon in Kenya 🇰🇪
+                  Launching soon in Kenya 🇰🇪 — for thrift sellers, local boutiques, and fashion lovers.
                 </p>
-                <p className="text-sm text-slate-400 mb-10 relative z-10">Join early users and get access first.</p>
+                <p className="text-sm text-slate-400 mb-10 relative z-10">Join early and get access first.</p>
                 
                 <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-lg mx-auto relative z-10">
                   <input 
@@ -492,7 +492,7 @@ const LandingPage = () => {
               </>
             )}
 
-            <p className="mt-8 text-xs text-slate-400 uppercase tracking-widest relative z-10">© 2026 Wireshops — Simple. Local. Trusted. 🇰🇪</p>
+            <p className="mt-8 text-xs text-slate-400 uppercase tracking-widest relative z-10">© 2026 Wireshops — Buy it. Sell it. Trust it. 🇰🇪</p>
           </div>
         </div>
       </section>
