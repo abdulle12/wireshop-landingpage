@@ -134,7 +134,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           
           <h1 className={`text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight ${brandColors.text} mb-6 max-w-5xl leading-tight`}>
-            Buy & sell fashion locally. <br className="hidden md:block" />
+            Buy & sell fashion safely. <br className="hidden md:block" />
             <span className="text-slate-400">Without the stress.</span>
           </h1>
 
@@ -244,8 +244,8 @@ const LandingPage = () => {
               </h2>
               <ul className="space-y-6">
                 {[
-                  { title: "List items in minutes", desc: "No shop setup, no tech skills needed. Upload photos, set your price, and go live instantly." },
-                  { title: "List for free — no upfront costs", desc: "Zero fees to get started. Upload your pieces and start reaching buyers right away." },
+                  { title: "Create your shop in minutes", desc: "setup shop setup, no tech skills needed. Upload photos, set your price, and go live instantly." },
+                  { title: "List for your items for free", desc: "Zero fees to get started. Upload your pieces and start reaching buyers right away." },
                   { title: "Manage orders, chats & payments in one place", desc: "Everything you need to run your sales — from one simple, powerful dashboard." },
                   { title: "Build a following of loyal buyers", desc: "Shoppers can follow your profile and get notified whenever you drop new pieces." }
                 ].map((item, index) => (
@@ -452,11 +452,11 @@ const LandingPage = () => {
             ) : (
               /* ── Default Form State ── */
               <>
-                <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Be among the first to shop on Wireshops</h2>
+                <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Become a Founding Partner</h2>
                 <p className="text-base md:text-lg text-slate-300 mb-2 max-w-xl mx-auto relative z-10">
-                  Launching soon in Kenya 🇰🇪 — for thrift sellers, local boutiques, and fashion lovers.
+                 We're inviting a limited number of Kenya's best thrift sellers and boutiques to join Wireshops before our public launch.
                 </p>
-                <p className="text-sm text-slate-400 mb-10 relative z-10">Join early and get access first.</p>
+                <p className="text-sm text-slate-400 mb-10 relative z-10">As an early seller, you'll enjoy exclusive launch benefits, extra promotion, and 3 months with zero commission.</p>
                 
                 <form onSubmit={handleJoin} className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-lg mx-auto relative z-10">
                   <input 
