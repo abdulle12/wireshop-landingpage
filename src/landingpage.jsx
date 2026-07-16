@@ -102,7 +102,7 @@ const LandingPage = () => {
               <a href="#sellers" className="text-slate-600 hover:text-[#1f2a37] font-medium text-sm transition-colors">Sell Clothes</a>
               <a href="#buyers" className="text-slate-600 hover:text-[#1f2a37] font-medium text-sm transition-colors">Shop Fashion</a>
               <button onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all shadow-md hover:shadow-xl transform hover:-translate-y-0.5`}>
-                Become a Founding Partner
+                Join Waitlist
               </button>
             </div>
 
@@ -121,7 +121,7 @@ const LandingPage = () => {
             <a href="#sellers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-800 p-2">Sell Your Clothes</a>
             <a href="#buyers" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-800 p-2">Shop Fashion</a>
             <button onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-5 py-3 rounded-xl text-center font-bold`}>
-              Become a Founding Partner
+              Join Waitlist
             </button>
           </div>
         )}
@@ -482,7 +482,7 @@ const LandingPage = () => {
                     disabled={isLoading}
                     className="w-full sm:w-auto bg-white text-[#1f2a37] px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-lg whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {isLoading ? 'Joining...' : 'Become a Founding Partner'}
+                    {isLoading ? 'Joining...' : 'Join Waitlist'}
                   </button>
                 </form>
 
