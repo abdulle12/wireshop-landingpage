@@ -146,7 +146,7 @@ const LandingPage = () => {
           </p>
 
           <button onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-12`}>
-            Join the Waitlist →
+            Join Now →
           </button>
 
           {/* Hero Mockups */}
