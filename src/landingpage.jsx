@@ -245,7 +245,7 @@ const LandingPage = () => {
               <ul className="space-y-6">
                 {[
                   { title: "Create your shop in minutes", desc: "setup shop setup, no tech skills needed. Upload photos, set your price, and go live instantly." },
-                  { title: "List for your items for free", desc: "Zero fees to get started. Upload your pieces and start reaching buyers right away." },
+                  { title: "List your items for free", desc: "Zero fees to get started. Upload your pieces and start reaching buyers right away." },
                   { title: "Manage orders, chats & payments in one place", desc: "Everything you need to run your sales — from one simple, powerful dashboard." },
                   { title: "Build a following of loyal buyers", desc: "Shoppers can follow your profile and get notified whenever you drop new pieces." }
                 ].map((item, index) => (
