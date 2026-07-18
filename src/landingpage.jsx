@@ -238,7 +238,7 @@ const LandingPage = () => {
                 For Sellers
               </div>
               <h2 className={`text-3xl md:text-5xl font-bold ${brandColors.text} mb-6 md:mb-8 tracking-tight`}>
-                Turn your unwanted <br/> clothes into cash.
+                Turn your clothes <br/> into cash.
               </h2>
               <ul className="space-y-6">
                 {[
