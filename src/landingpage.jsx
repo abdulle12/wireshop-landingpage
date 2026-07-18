@@ -139,11 +139,9 @@ const LandingPage = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl mb-4 leading-relaxed px-4">
-            Clear out your wardrobe or shop from real local boutiques — chat in real time, pay safely, and get what you actually want.
+           Shop from trusted local sellers or sell your clothes with confidence. Chat first, pay securely, and buy without the scam risk.
           </p>
-          <p className="text-sm md:text-base text-slate-400 mb-10 font-medium">
-            No Instagram DMs. No M-Pesa scams. No fake receipts.
-          </p>
+         
 
           <button onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-12`}>
             Join Now →
