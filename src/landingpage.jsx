@@ -139,7 +139,7 @@ const LandingPage = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-slate-500 max-w-2xl mb-4 leading-relaxed px-4">
-           Shop from trusted local sellers or sell your clothes with confidence. Chat first, pay securely, and buy without the scam risk.
+           Chat first. Pay safely. Confirm your order when it arrives.
           </p>
          
 
@@ -450,7 +450,7 @@ const LandingPage = () => {
             ) : (
               /* ── Default Form State ── */
               <>
-                <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Become a Founding Partner</h2>
+                <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Get early access</h2>
                 <p className="text-base md:text-lg text-slate-300 mb-2 max-w-xl mx-auto relative z-10">
                  We're inviting a limited number of Kenya's best thrift sellers and boutiques to join Wireshops before our public launch.
                 </p>
