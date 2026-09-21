@@ -452,7 +452,8 @@ const LandingPage = () => {
               <>
                 <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Get early access</h2>
                 <p className="text-base md:text-lg text-slate-300 mb-2 max-w-xl mx-auto relative z-10">
-                 We're inviting a limited number of Kenya's best thrift sellers and boutiques to join Wireshops before our public launch.
+                 We’re inviting a limited number of clothing sellers across Kenya to join Wireshops before we launch.
+
                 </p>
                 <p className="text-sm text-slate-400 mb-10 relative z-10">As an early seller, you'll enjoy exclusive launch benefits, extra promotion, and 3 months with zero commission.</p>
                 
