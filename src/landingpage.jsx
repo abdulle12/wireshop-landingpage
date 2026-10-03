@@ -157,7 +157,7 @@ const LandingPage = () => {
 
       {/* Navigation */}
       <header>
-        <nav aria-label="Main" className="fixed w-full z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100">
+        <nav aria-label="Main" className="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-100 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
               <button
@@ -273,7 +273,7 @@ const LandingPage = () => {
         </section>
 
         {/* Problem Section */}
-        <section id="problem" className="py-16 md:py-24 bg-slate-50">
+        <section id="problem" className="scroll-mt-20 py-16 md:py-24 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>Buying &amp; selling clothes online is a mess.</h2>
@@ -330,7 +330,7 @@ const LandingPage = () => {
         </section>
 
         {/* For Sellers Section */}
-        <section id="sellers" className="py-16 md:py-24 bg-white overflow-hidden">
+        <section id="sellers" className="scroll-mt-20 py-16 md:py-24 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
@@ -422,7 +422,7 @@ const LandingPage = () => {
         </section>
 
         {/* For Buyers Section */}
-        <section id="buyers" className="py-16 md:py-24 bg-slate-50">
+        <section id="buyers" className="scroll-mt-20 py-16 md:py-24 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
               <div className="lg:w-1/2">
@@ -512,7 +512,7 @@ const LandingPage = () => {
         </section>
 
         {/* CTA Waitlist */}
-        <section id="waitlist" className="py-16 md:py-24 bg-white relative">
+        <section id="waitlist" className="scroll-mt-20 py-16 md:py-24 bg-white relative">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
             <div className={`${brandColors.bg} rounded-3xl p-8 md:p-16 shadow-2xl overflow-hidden relative`}>
