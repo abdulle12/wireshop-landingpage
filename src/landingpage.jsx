@@ -228,7 +228,7 @@ const LandingPage = () => {
               <span className="text-slate-500">Without the stress.</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-500 max-w-2xl mb-4 leading-relaxed px-4">
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mb-4 leading-relaxed px-4">
               Chat first. Pay safely. Confirm your order when it arrives.
             </p>
 
@@ -277,7 +277,7 @@ const LandingPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>Buying &amp; selling clothes online is a mess.</h2>
-              <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-10">It shouldn't be this hard.</p>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-10">It shouldn't be this hard.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-16">
@@ -301,7 +301,7 @@ const LandingPage = () => {
                   <MessageCircle className="text-white" size={24} aria-hidden="true" />
                 </div>
                 <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Ask before you buy</h3>
-                <p className="text-slate-500 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   Message sellers directly — check sizing, condition, and delivery before committing. No surprises.
                 </p>
               </div>
@@ -311,7 +311,7 @@ const LandingPage = () => {
                   <ShieldCheck className="text-white" size={24} aria-hidden="true" />
                 </div>
                 <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Your money is protected</h3>
-                <p className="text-slate-500 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   Pay through Wireshops and your funds are held safely. Released only once your order arrives and you're happy.
                 </p>
               </div>
@@ -321,7 +321,7 @@ const LandingPage = () => {
                   <Star className="text-white" size={24} aria-hidden="true" />
                 </div>
                 <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Ratings from real buyers</h3>
-                <p className="text-slate-500 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed">
                   Every review is tied to a real transaction — no fake hype, no guesswork.
                 </p>
               </div>
@@ -349,7 +349,7 @@ const LandingPage = () => {
                       </div>
                       <div>
                         <h3 className={`font-bold text-lg ${brandColors.text}`}>{item.title}</h3>
-                        <p className="text-slate-500 text-sm md:text-base">{item.desc}</p>
+                        <p className="text-slate-600 text-sm md:text-base">{item.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -440,7 +440,7 @@ const LandingPage = () => {
                       </div>
                       <div>
                         <h3 className={`font-bold text-lg ${brandColors.text}`}>{item.title}</h3>
-                        <p className="text-slate-500">{item.desc}</p>
+                        <p className="text-slate-600">{item.desc}</p>
                       </div>
                     </li>
                   ))}
@@ -480,7 +480,7 @@ const LandingPage = () => {
                           <Star key={i} fill="currentColor" size={16} aria-hidden="true" />
                         ))}
                       </div>
-                      <p className="text-xs text-slate-500">"Finally, a place where I feel safe paying online."</p>
+                      <p className="text-xs text-slate-600">"Finally, a place where I feel safe paying online."</p>
                     </div>
                   </div>
                 </div>
@@ -494,7 +494,7 @@ const LandingPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>How it works</h2>
-              <p className="text-lg text-slate-500 max-w-xl mx-auto">Three simple steps. That's it.</p>
+              <p className="text-lg text-slate-600 max-w-xl mx-auto">Three simple steps. That's it.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
               {STEPS.map((item) => (
@@ -504,7 +504,7 @@ const LandingPage = () => {
                     <item.icon className="text-white" size={22} aria-hidden="true" />
                   </div>
                   <h3 className={`text-lg font-bold ${brandColors.text} mb-2`}>{item.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
