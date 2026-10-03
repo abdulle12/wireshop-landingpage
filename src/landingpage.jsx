@@ -499,7 +499,7 @@ const LandingPage = () => {
             <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
               {STEPS.map((item) => (
                 <div key={item.step} className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow text-center">
-                  <div aria-hidden="true" className="text-5xl font-extrabold text-slate-100 mb-4">{item.step}</div>
+                  <div aria-hidden="true" data-step={item.step} className="h-12 mb-4 text-5xl font-extrabold leading-none text-slate-100 before:content-[attr(data-step)]"></div>
                   <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-4 mx-auto`}>
                     <item.icon className="text-white" size={22} aria-hidden="true" />
                   </div>
