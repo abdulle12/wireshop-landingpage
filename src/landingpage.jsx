@@ -13,18 +13,18 @@ import {
   MapPin,
 } from 'lucide-react';
 
-// Optimized images (created by scripts/optimize-images.mjs)
-import phoneImg from './assets/optimized/phone.webp';
-import desktopImg from './assets/optimized/desktop.webp';
-import Logo from './assets/optimized/ds.webp';
-import shop from './assets/optimized/new.webp';
-import profile from './assets/optimized/profile.webp';
-import intro from './assets/optimized/intro.webp';
-import checkout from './assets/optimized/checkout.webp';
+// Images: same file names as before (replace the files in src/assets with your optimized versions)
+import phoneImg from './assets/phone.png';
+import desktopImg from './assets/desktop.png';
+import Logo from './assets/ds.png';
+import shop from './assets/new.png';
+import profile from './assets/profile.png';
+import intro from './assets/intro.png';
+import checkout from './assets/checkout.png';
 
 // ── Image dimensions ─────────────────────────────────────────────────────────
-// IMPORTANT: replace these with the "width=… height=…" numbers printed by
-// `node scripts/optimize-images.mjs`. Correct values = zero layout shift (CLS).
+// IMPORTANT: set these to the real pixel width/height of each image file in src/assets
+// (right-click file > Properties > Details). Correct values = zero layout shift (CLS).
 const DIMS = {
   logo:     { width: 96,   height: 96 },
   desktop:  { width: 1400, height: 875 },
