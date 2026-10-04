@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   Menu,
   X,
-  Lock,
   Smile,
   AlertCircle,
   BadgeCheck,
@@ -93,12 +92,6 @@ const STEPS = [
   { step: '01', icon: MapPin, title: 'Discover', desc: 'Browse products and shops.' },
   { step: '02', icon: MessageCircle, title: 'Chat', desc: 'Ask questions and confirm the details.' },
   { step: '03', icon: ShieldCheck, title: 'Pay & receive', desc: 'Pay securely, receive your order and confirm delivery.' },
-];
-
-const WELCOME_CARDS = [
-  { icon: ShieldCheck, title: 'Early Access', desc: 'You\'ll be among the first to shop and sell when we launch.' },
-  { icon: MessageCircle, title: 'Launch Updates', desc: 'We\'ll email you key milestones and sneak peeks.' },
-  { icon: Star, title: 'Founding Perks', desc: 'Early users get exclusive benefits at launch.' },
 ];
 
 const LandingPage = () => {
@@ -275,7 +268,8 @@ const LandingPage = () => {
         </section>
 
         {/* Problem Section */}
-        <section id="problem" className="scroll-mt-20 py-16 md:py-24 bg-slate-50">
+        {/* scroll-mt: lands the section heading ~24px under the navbar (80px) on every screen size, no extra gap */}
+        <section id="problem" className="scroll-mt-10 md:scroll-mt-2 py-16 md:py-24 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>Buying &amp; selling clothes online is not easy.</h2>
@@ -332,7 +326,7 @@ const LandingPage = () => {
         </section>
 
         {/* For Sellers Section */}
-        <section id="sellers" className="scroll-mt-20 py-16 md:py-24 bg-white overflow-hidden">
+        <section id="sellers" className="scroll-mt-10 md:scroll-mt-2 py-16 md:py-24 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
@@ -360,12 +354,11 @@ const LandingPage = () => {
                 <p className="mt-8 text-slate-600 font-medium text-sm">👉 Your old outfit is someone else's next favourite look.</p>
               </div>
 
-              {/* Images use order-1 on mobile (top) and lg:order-2 on desktop (right) */}
-              <div className="lg:w-1/2 w-full order-1 lg:order-2">
+              {/* Phone-frame images: hidden on small screens (below md), shown on tablets and larger */}
+              <div className="hidden md:block lg:w-1/2 w-full order-1 lg:order-2">
                 <div className="relative py-10 md:py-16 flex justify-center">
                   <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full md:h-[120%] bg-gradient-to-tr from-slate-100 to-transparent rounded-full -z-10"></div>
                   <div className="flex flex-row justify-center items-center gap-2 sm:gap-3">
-                    {/* Width adjusted to w-32 for mobile responsiveness */}
                     <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform -rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={shop}
@@ -377,7 +370,6 @@ const LandingPage = () => {
                         className="w-full h-auto opacity-90"
                       />
                     </div>
-                    {/* Width adjusted to w-32 for mobile responsiveness */}
                     <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform translate-y-8 md:translate-y-16 rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={profile}
@@ -408,12 +400,7 @@ const LandingPage = () => {
                 <p className="text-slate-300 text-lg leading-relaxed mb-8">
                   We made it <span className="text-white font-semibold">safer, simpler, and organised.</span>
                 </p>
-                <blockquote className="p-6 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10 mb-4">
-                  <p className="text-white italic">"I just want to find a nice piece without stressing about whether the seller is real."</p>
-                </blockquote>
-                <blockquote className="p-6 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10">
-                  <p className="text-white italic">"Finally, a place where I feel safe paying online."</p>
-                </blockquote>
+
               </div>
               <div className="md:w-1/2 w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {TRUST_POINTS.map((item) => (
@@ -428,10 +415,10 @@ const LandingPage = () => {
         </section>
 
         {/* For Buyers Section */}
-        <section id="buyers" className="scroll-mt-20 py-16 md:py-24 bg-slate-50 overflow-hidden">
+        <section id="buyers" className="scroll-mt-10 md:scroll-mt-2 py-16 md:py-24 bg-slate-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
-              
+
               {/* Text content uses order-2 on mobile (bottom) and lg:order-1 on desktop (placed on right due to flex-row-reverse) */}
               <div className="lg:w-1/2 order-2 lg:order-1">
                 <div className="inline-block px-4 py-1.5 bg-indigo-100 rounded-full text-xs font-bold uppercase tracking-widest text-indigo-900 mb-6">
@@ -455,13 +442,12 @@ const LandingPage = () => {
                 </ul>
               </div>
 
-              {/* Images use order-1 on mobile (top) and lg:order-2 on desktop (placed on left due to flex-row-reverse) */}
-              <div className="lg:w-1/2 w-full order-1 lg:order-2">
+              {/* Phone-frame images: hidden on small screens (below md), shown on tablets and larger */}
+              <div className="hidden md:block lg:w-1/2 w-full order-1 lg:order-2">
                 <div className="relative py-10 md:py-16 flex justify-center">
                   <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full md:h-[120%] bg-gradient-to-tr from-slate-100 to-transparent rounded-full -z-10"></div>
-                  
+
                   <div className="flex flex-row justify-center items-center gap-2 sm:gap-3 relative">
-                    {/* Width adjusted to w-32 for mobile responsiveness */}
                     <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform -rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={intro}
@@ -474,7 +460,6 @@ const LandingPage = () => {
                       />
                     </div>
 
-                    {/* Width adjusted to w-32 for mobile responsiveness */}
                     <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform translate-y-8 md:translate-y-16 rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={checkout}
@@ -486,7 +471,7 @@ const LandingPage = () => {
                         className="w-full h-auto opacity-90"
                       />
                     </div>
-                    
+
                     {/* Floating Review Box */}
                     <div className="absolute -bottom-10 sm:-bottom-6 -right-2 sm:-right-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:block z-20 max-w-[200px]">
                       <div className="flex gap-1 text-yellow-400 mb-2" role="img" aria-label="5 out of 5 stars">
@@ -527,7 +512,7 @@ const LandingPage = () => {
         </section>
 
         {/* CTA Waitlist */}
-        <section id="waitlist" className="scroll-mt-20 py-16 md:py-24 bg-white relative">
+        <section id="waitlist" className="scroll-mt-10 md:scroll-mt-2 py-16 md:py-24 bg-white relative">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
             <div className={`${brandColors.bg} rounded-3xl p-8 md:p-16 shadow-2xl overflow-hidden relative`}>
@@ -536,40 +521,19 @@ const LandingPage = () => {
               <div aria-hidden="true" className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-indigo-500 opacity-20 rounded-full blur-2xl"></div>
 
               {submitted ? (
-                /* ── Success State ── */
+                /* ── Success State: short and simple ── */
                 <div className="relative z-10 flex flex-col items-center" role="status" aria-live="polite">
-                  <div className="w-20 h-20 rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center mb-6 mx-auto">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
-                      <CheckCircle2 className="text-[#1f2a37]" size={28} aria-hidden="true" />
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 border-2 border-white/30 flex items-center justify-center mb-5 mx-auto">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white flex items-center justify-center shadow-lg">
+                      <CheckCircle2 className="text-[#1f2a37]" size={24} aria-hidden="true" />
                     </div>
                   </div>
 
                   <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 tracking-tight">
                     You're on the list! 🎉
                   </h2>
-                  <p className="text-base md:text-lg text-slate-300 mb-8 max-w-md mx-auto leading-relaxed">
-                    Welcome to the Wireshops early access community. We'll be in touch soon.
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-2xl mb-8">
-                    {WELCOME_CARDS.map((item) => (
-                      <div key={item.title} className="bg-white/10 border border-white/10 rounded-2xl p-4 text-left backdrop-blur-sm">
-                        <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mb-3">
-                          <item.icon className="text-white" size={16} aria-hidden="true" />
-                        </div>
-                        <h3 className="text-white font-semibold text-sm mb-1">{item.title}</h3>
-                        <p className="text-slate-300 text-xs leading-relaxed">{item.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="w-full max-w-md border-t border-white/10 mb-6"></div>
-
-                  <p className="text-slate-300 text-sm mb-2">
-                    Know someone who loves fashion or wants to sell their old clothes?
-                  </p>
-                  <p className="text-white font-medium text-sm">
-                    Share the word — the more early users, the faster we launch 🚀
+                  <p className="text-base md:text-lg text-slate-300 max-w-md mx-auto leading-relaxed">
+                    Thanks for joining Wireshops early access. We'll email you as soon as we launch.
                   </p>
                 </div>
               ) : (
