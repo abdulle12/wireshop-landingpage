@@ -9,30 +9,31 @@ import {
   Lock,
   Smile,
   AlertCircle,
-  ArrowRight,
+  BadgeCheck,
+  Truck,
   MapPin,
 } from 'lucide-react';
 
 // Images: same file names as before (replace the files in src/assets with your optimized versions)
-import phoneImg from './assets/phone.png';
-import desktopImg from './assets/desktop.png';
-import Logo from './assets/ds.png';
-import shop from './assets/new.png';
-import profile from './assets/profile.png';
-import intro from './assets/intro.png';
-import checkout from './assets/checkout.png';
+import phoneImg from './assets/phone.webp';
+import desktopImg from './assets/desktop.webp';
+import Logo from './assets/ds.webp';
+import shop from './assets/new.webp';
+import profile from './assets/profile.webp';
+import intro from './assets/intro.webp';
+import checkout from './assets/checkout.webp';
 
 // ── Image dimensions ─────────────────────────────────────────────────────────
 // IMPORTANT: set these to the real pixel width/height of each image file in src/assets
 // (right-click file > Properties > Details). Correct values = zero layout shift (CLS).
 const DIMS = {
-  logo:     { width: 96,   height: 96 },
+  logo:     { width: 500,  height: 500 },
   desktop:  { width: 1400, height: 875 },
-  phone:    { width: 420,  height: 900 },
-  shop:     { width: 440,  height: 900 },
-  profile:  { width: 440,  height: 900 },
-  intro:    { width: 600,  height: 1200 },
-  checkout: { width: 600,  height: 1200 },
+  phone:    { width: 400,  height: 726 },
+  shop:     { width: 500,  height: 889 },
+  profile:  { width: 500,  height: 910 },
+  intro:    { width: 500,  height: 912 },
+  checkout: { width: 500,  height: 900 },
 };
 // ────────────────────────────────────────────────────────────────────────────
 
@@ -62,36 +63,36 @@ const brandColors = {
 
 // Static content lives outside the component so it isn't recreated on every render
 const PROBLEMS = [
-  { icon: AlertCircle, label: 'You send money — the seller ghosts you' },
+  { icon: AlertCircle, label: 'Buyers worry about paying the wrong seller.' },
   { icon: Smile, label: 'Sellers deal with buyers who never show up' },
   { icon: MessageCircle, label: 'Everything happens in scattered DMs with no record' },
 ];
 
 const SELLER_POINTS = [
-  { title: 'Create your shop in minutes', desc: 'Simple shop setup, no tech skills needed. Upload photos, set your price, and go live instantly.' },
-  { title: 'List your items for free', desc: 'Zero fees to get started. Upload your pieces and start reaching buyers right away.' },
-  { title: 'Manage orders, chats & payments in one place', desc: 'Everything you need to run your sales — from one simple, powerful dashboard.' },
-  { title: 'Build a following of loyal buyers', desc: 'Shoppers can follow your profile and get notified whenever you drop new pieces.' },
+  { title: 'Create your shop', desc: 'Set up your shop, add your products and start selling.' },
+  { title: 'List your items for free', desc: 'Upload your clothes, add prices and reach new buyers.' },
+  { title: 'Manage everything in one place', desc: 'Keep your products, chats, orders and payments organised.' },
+  { title: 'Build a following of loyal buyers', desc: 'Buyers can follow your profile and get notified whenever you drop new pieces.' },
 ];
 
 const TRUST_POINTS = [
-  { icon: Lock, text: 'No fake M-Pesa screenshots' },
-  { icon: Smile, text: 'No ghost buyers' },
-  { icon: AlertCircle, text: 'No scam worries' },
-  { icon: ArrowRight, text: 'Clear delivery terms' },
+  { icon: ShieldCheck, text: 'Pay securely' },
+  { icon: MessageCircle, text: 'Chat before buying' },
+  { icon: BadgeCheck, text: 'Real buyer reviews' },
+  { icon: Truck, text: 'Clear delivery' },
 ];
 
 const BUYER_POINTS = [
-  { title: 'Discover verified local shops & thrift sellers near you', desc: 'Browse boutiques and secondhand listings in one place — no more scrolling through random Instagram pages.' },
-  { title: 'Follow sellers and never miss a new drop', desc: 'Stay in the loop whenever your favourite shops or thrift accounts list new pieces or deals.' },
-  { title: 'See real photos, clear pricing & honest reviews', desc: 'No more guessing — genuine buyer reviews and upfront pricing on every listing.' },
-  { title: 'Pay safely — your money is protected', desc: 'Funds are held securely and only released once you confirm your order arrived. Zero risk.' },
+  { title: 'Discover local sellers', desc: 'Find boutiques, thrift sellers and fashion listings in one place.' },
+  { title: 'Follow your favourite shops', desc: 'Get notified when sellers add new products.' },
+  { title: 'See clear prices and real reviews', desc: 'Make informed decisions before you buy.' },
+  { title: 'Pay securely', desc: 'Funds are held securely and only released once you confirm your order arrived.' },
 ];
 
 const STEPS = [
-  { step: '01', icon: MapPin, title: 'Discover shops & listings near you', desc: 'Browse local boutiques and thrift sellers in your area — all verified, all in one place.' },
-  { step: '02', icon: MessageCircle, title: 'Chat, ask questions & place your order', desc: 'Message the seller to confirm sizing, condition, or price — before you commit.' },
-  { step: '03', icon: ShieldCheck, title: 'Pay safely → receive → confirm → done', desc: 'Your payment is held in escrow. Once your order arrives and you\'re happy, the seller gets paid.' },
+  { step: '01', icon: MapPin, title: 'Discover', desc: 'Browse products and shops.' },
+  { step: '02', icon: MessageCircle, title: 'Chat', desc: 'Ask questions and confirm the details.' },
+  { step: '03', icon: ShieldCheck, title: 'Pay & receive', desc: 'Pay securely, receive your order and confirm delivery.' },
 ];
 
 const WELCOME_CARDS = [
@@ -166,7 +167,8 @@ const LandingPage = () => {
                 className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                <span className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center shadow-lg shadow-gray-200 overflow-hidden`}>
+                {/* Logo size reduced to w-10 h-10 */}
+                <span className={`w-10 h-10 ${brandColors.bg} rounded-xl flex items-center justify-center shadow-lg shadow-gray-200 overflow-hidden`}>
                   <img
                     src={Logo}
                     alt=""
@@ -229,11 +231,11 @@ const LandingPage = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 max-w-2xl mb-4 leading-relaxed px-4">
-              Chat first. Pay safely. Confirm your order when it arrives.
+              Chat first. Pay safely. Track your order easily.
             </p>
 
             <button type="button" onClick={scrollToWaitlist} className={`${brandColors.bg} text-white px-8 py-4 rounded-full text-base font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-12`}>
-              Join Now →
+              Join  the waiting list →
             </button>
 
             {/* Hero Mockups */}
@@ -276,7 +278,7 @@ const LandingPage = () => {
         <section id="problem" className="scroll-mt-20 py-16 md:py-24 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>Buying &amp; selling clothes online is a mess.</h2>
+              <h2 className={`text-3xl md:text-4xl font-bold ${brandColors.text} mb-4`}>Buying &amp; selling clothes online is not easy.</h2>
               <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-10">It shouldn't be this hard.</p>
             </div>
 
@@ -302,7 +304,7 @@ const LandingPage = () => {
                 </div>
                 <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Ask before you buy</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Message sellers directly — check sizing, condition, and delivery before committing. No surprises.
+                  Chat with sellers about size, condition and delivery before placing your order.
                 </p>
               </div>
 
@@ -310,7 +312,7 @@ const LandingPage = () => {
                 <div className={`w-12 h-12 ${brandColors.bg} rounded-xl flex items-center justify-center mb-6`}>
                   <ShieldCheck className="text-white" size={24} aria-hidden="true" />
                 </div>
-                <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Your money is protected</h3>
+                <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Pay securely</h3>
                 <p className="text-slate-600 leading-relaxed">
                   Pay through Wireshops and your funds are held safely. Released only once your order arrives and you're happy.
                 </p>
@@ -322,7 +324,7 @@ const LandingPage = () => {
                 </div>
                 <h3 className={`text-xl font-bold ${brandColors.text} mb-3`}>Ratings from real buyers</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Every review is tied to a real transaction — no fake hype, no guesswork.
+                  Reviews are connected to completed purchases, helping you buy with more confidence.
                 </p>
               </div>
             </div>
@@ -334,6 +336,7 @@ const LandingPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
+              {/* Text content uses order-2 on mobile (bottom) and lg:order-1 on desktop (left) */}
               <div className="lg:w-1/2 order-2 lg:order-1">
                 <div className="inline-block px-4 py-1.5 bg-gray-100 rounded-full text-xs font-bold uppercase tracking-widest text-slate-600 mb-6">
                   For Sellers
@@ -357,11 +360,13 @@ const LandingPage = () => {
                 <p className="mt-8 text-slate-600 font-medium text-sm">👉 Your old outfit is someone else's next favourite look.</p>
               </div>
 
-              <div className="lg:w-1/2 order-1 lg:order-2 w-full">
+              {/* Images use order-1 on mobile (top) and lg:order-2 on desktop (right) */}
+              <div className="lg:w-1/2 w-full order-1 lg:order-2">
                 <div className="relative py-10 md:py-16 flex justify-center">
                   <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full md:h-[120%] bg-gradient-to-tr from-slate-100 to-transparent rounded-full -z-10"></div>
-                  <div className="flex flex-row justify-center items-center gap-4 sm:gap-6">
-                    <div className={`w-32 sm:w-48 border-4 ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-3xl shadow-xl overflow-hidden transform -rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
+                  <div className="flex flex-row justify-center items-center gap-2 sm:gap-3">
+                    {/* Width adjusted to w-32 for mobile responsiveness */}
+                    <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform -rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={shop}
                         alt="Seller shop page on Wireshops"
@@ -372,7 +377,8 @@ const LandingPage = () => {
                         className="w-full h-auto opacity-90"
                       />
                     </div>
-                    <div className={`w-32 sm:w-48 border-4 ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-3xl shadow-xl overflow-hidden transform translate-y-8 md:translate-y-12 rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
+                    {/* Width adjusted to w-32 for mobile responsiveness */}
+                    <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform translate-y-8 md:translate-y-16 rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={profile}
                         alt="Seller profile page on Wireshops"
@@ -397,7 +403,7 @@ const LandingPage = () => {
               <div className="md:w-1/2">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Built for how people actually shop fashion in Kenya</h2>
                 <p className="text-slate-300 text-lg leading-relaxed mb-4">
-                  Most fashion buying and selling already happens on WhatsApp and Instagram. We didn't change that.
+                  People already discover fashion on Instagram, TikTok and WhatsApp. We didn't try to replace that.
                 </p>
                 <p className="text-slate-300 text-lg leading-relaxed mb-8">
                   We made it <span className="text-white font-semibold">safer, simpler, and organised.</span>
@@ -422,10 +428,12 @@ const LandingPage = () => {
         </section>
 
         {/* For Buyers Section */}
-        <section id="buyers" className="scroll-mt-20 py-16 md:py-24 bg-slate-50">
+        <section id="buyers" className="scroll-mt-20 py-16 md:py-24 bg-slate-50 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
-              <div className="lg:w-1/2">
+              
+              {/* Text content uses order-2 on mobile (bottom) and lg:order-1 on desktop (placed on right due to flex-row-reverse) */}
+              <div className="lg:w-1/2 order-2 lg:order-1">
                 <div className="inline-block px-4 py-1.5 bg-indigo-100 rounded-full text-xs font-bold uppercase tracking-widest text-indigo-900 mb-6">
                   For Buyers
                 </div>
@@ -447,10 +455,14 @@ const LandingPage = () => {
                 </ul>
               </div>
 
-              <div className="lg:w-1/2 w-full">
-                <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <div className="space-y-4 pt-8 md:pt-12">
-                    <div className={`border-2 ${brandColors.border} rounded-2xl shadow-lg overflow-hidden`}>
+              {/* Images use order-1 on mobile (top) and lg:order-2 on desktop (placed on left due to flex-row-reverse) */}
+              <div className="lg:w-1/2 w-full order-1 lg:order-2">
+                <div className="relative py-10 md:py-16 flex justify-center">
+                  <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full md:h-[120%] bg-gradient-to-tr from-slate-100 to-transparent rounded-full -z-10"></div>
+                  
+                  <div className="flex flex-row justify-center items-center gap-2 sm:gap-3 relative">
+                    {/* Width adjusted to w-32 for mobile responsiveness */}
+                    <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform -rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={intro}
                         alt="Buyer feed showing local shops and listings"
@@ -458,12 +470,12 @@ const LandingPage = () => {
                         height={DIMS.intro.height}
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-auto"
+                        className="w-full h-auto opacity-90"
                       />
                     </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className={`border-2 ${brandColors.border} rounded-2xl shadow-lg overflow-hidden`}>
+
+                    {/* Width adjusted to w-32 for mobile responsiveness */}
+                    <div className={`w-32 sm:w-56 lg:w-64 border-[4px] md:border-[6px] ${brandColors.border} bg-[#1f2a37] rounded-2xl md:rounded-[2rem] shadow-xl overflow-hidden transform translate-y-8 md:translate-y-16 rotate-6 hover:rotate-0 transition-all duration-500 z-10`}>
                       <img
                         src={checkout}
                         alt="Buyer checkout with protected payment"
@@ -471,10 +483,12 @@ const LandingPage = () => {
                         height={DIMS.checkout.height}
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-auto"
+                        className="w-full h-auto opacity-90"
                       />
                     </div>
-                    <div className="bg-white p-4 rounded-2xl shadow-md border border-slate-100 hidden sm:block">
+                    
+                    {/* Floating Review Box */}
+                    <div className="absolute -bottom-10 sm:-bottom-6 -right-2 sm:-right-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden sm:block z-20 max-w-[200px]">
                       <div className="flex gap-1 text-yellow-400 mb-2" role="img" aria-label="5 out of 5 stars">
                         {[0, 1, 2, 3, 4].map((i) => (
                           <Star key={i} fill="currentColor" size={16} aria-hidden="true" />
@@ -485,6 +499,7 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
@@ -562,9 +577,9 @@ const LandingPage = () => {
                 <>
                   <h2 className="text-2xl md:text-5xl font-bold text-white mb-4 tracking-tight relative z-10">Get early access</h2>
                   <p className="text-base md:text-lg text-slate-300 mb-2 max-w-xl mx-auto relative z-10">
-                    We’re inviting a limited number of clothing sellers across Kenya to join Wireshops before we launch.
+                    We’re inviting a limited number of clothing sellers and buyers across Kenya to join Wireshops before we launch.
                   </p>
-                  <p className="text-sm text-slate-300 mb-10 relative z-10">As an early seller, you'll enjoy exclusive launch benefits, extra promotion, and 3 months with zero commission.</p>
+                  <p className="text-sm text-slate-300 mb-10 relative z-10">As an early user, you'll enjoy exclusive launch benefits, extra promotion, and 3 months with zero commission.</p>
 
                   <form
                     onSubmit={handleJoin}
