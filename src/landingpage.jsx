@@ -40,14 +40,41 @@ const DIMS = {
 let supabasePromise;
 const getSupabase = () => {
   if (!supabasePromise) {
-    supabasePromise = import('@supabase/supabase-js').then(({ createClient }) =>
-      createClient(
-        import.meta.env.VITE_SUPABASE_URL,
-        import.meta.env.VITE_SUPABASE_ANON_KEY
-      )
-    );
+    supabasePromise = import('@supabase/supabase-js')
+      .then(({ createClient }) => {
+        const url = import.meta.env.VITE_SUPABASE_URL;
+        const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
+        if (!url || !key) {
+          throw new Error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY');
+        }
+        return createClient(url, key);
+      })
+      .catch((err) => {
+        supabasePromise = undefined; // allow a retry instead of caching the failure
+        throw err;
+      });
   }
   return supabasePromise;
+};
+// ────────────────────────────────────────────────────────────────────────────
+
+// ── Accepts an email OR a phone number in one field ─────────────────────────
+const parseContact = (raw) => {
+  const value = raw.trim();
+
+  if (value.includes('@')) {
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    return ok ? { type: 'email', value: value.toLowerCase() } : null;
+  }
+
+  let phone = value.replace(/[\s\-().]/g, '');
+  if (!/^\+?\d{9,15}$/.test(phone)) return null;
+
+  // Kenyan numbers: 07XXXXXXXX / 01XXXXXXXX / 2547XXXXXXXX  ->  +2547XXXXXXXX
+  if (/^0[17]\d{8}$/.test(phone)) phone = '+254' + phone.slice(1);
+  else if (/^254[17]\d{8}$/.test(phone)) phone = '+' + phone;
+
+  return { type: 'phone', value: phone };
 };
 // ────────────────────────────────────────────────────────────────────────────
 
@@ -96,7 +123,7 @@ const STEPS = [
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [formData, setFormData] = useState({ name: '', contact: '' });
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -109,17 +136,24 @@ const LandingPage = () => {
   // ── Saves to Supabase (client is loaded on first focus / submit) ──────────
   const handleJoin = async (e) => {
     e.preventDefault();
-    if (!formData.email || !formData.name) return;
+    if (!formData.contact || !formData.name) return;
+
+    const contact = parseContact(formData.contact);
+    if (!contact) {
+      setError('Please enter a valid email address or phone number.');
+      return;
+    }
 
     setIsLoading(true);
     setError('');
 
     let sbError = null;
     try {
+      // Email OR phone is stored in the existing `email` column (no new column needed)
       const supabase = await getSupabase();
       const result = await supabase
         .from('waitlist')
-        .insert([{ full_name: formData.name.trim(), email: formData.email.trim() }]);
+        .insert([{ full_name: formData.name.trim(), email: contact.value }]);
       sbError = result.error;
     } catch (err) {
       sbError = err;
@@ -128,8 +162,10 @@ const LandingPage = () => {
     setIsLoading(false);
 
     if (sbError) {
+      // Real reason is visible in the browser console (F12) while you debug
+      console.error('Waitlist error:', sbError);
       if (sbError.code === '23505') {
-        setError('This email is already on the waitlist!');
+        setError('This email or phone number is already on the waitlist!');
       } else {
         setError('Something went wrong. Please try again.');
       }
@@ -137,7 +173,7 @@ const LandingPage = () => {
     }
 
     setSubmitted(true);
-    setFormData({ name: '', email: '' });
+    setFormData({ name: '', contact: '' });
   };
   // ────────────────────────────────────────────────────────────────────────
 
@@ -533,7 +569,7 @@ const LandingPage = () => {
                     You're on the list! 🎉
                   </h2>
                   <p className="text-base md:text-lg text-slate-300 max-w-md mx-auto leading-relaxed">
-                    Thanks for joining Wireshops early access. We'll email you as soon as we launch.
+                    Thanks for joining Wireshops early access. We'll be in touch as soon as we launch.
                   </p>
                 </div>
               ) : (
@@ -547,7 +583,7 @@ const LandingPage = () => {
 
                   <form
                     onSubmit={handleJoin}
-                    onFocus={getSupabase}
+                    onFocus={() => getSupabase().catch(() => {})}
                     className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-lg mx-auto relative z-10"
                   >
                     <label htmlFor="waitlist-name" className="sr-only">Full name</label>
@@ -562,15 +598,15 @@ const LandingPage = () => {
                       onChange={handleInputChange}
                       required
                     />
-                    <label htmlFor="waitlist-email" className="sr-only">Email address</label>
+                    <label htmlFor="waitlist-contact" className="sr-only">Email or phone number</label>
                     <input
-                      id="waitlist-email"
-                      type="email"
-                      name="email"
-                      placeholder="Email Address"
+                      id="waitlist-contact"
+                      type="text"
+                      name="contact"
+                      placeholder="Email or Phone No."
                       autoComplete="email"
                       className="w-full sm:flex-1 px-5 py-4 rounded-xl border-0 bg-white/10 text-white placeholder-slate-300 focus:ring-2 focus:ring-white focus:outline-none backdrop-blur-sm"
-                      value={formData.email}
+                      value={formData.contact}
                       onChange={handleInputChange}
                       required
                     />
